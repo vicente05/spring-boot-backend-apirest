@@ -1,6 +1,7 @@
 package tresbits.springbootbackendapirest.models.services;
 
 import tresbits.springbootbackendapirest.models.entity.Cliente;
+import tresbits.springbootbackendapirest.models.entity.Region;
 import tresbits.springbootbackendapirest.models.dao.IClienteDao;
 import java.util.*;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ClienteServiceImpl implements IClienteService {
+public class ClienteServiceImpl extends HomeServiceImpl implements IClienteService {
     @Autowired
     private IClienteDao clienteDao;
 
@@ -45,4 +46,15 @@ public class ClienteServiceImpl implements IClienteService {
         return clienteDao.save(cliente);
     }
 
+    @Override
+    public List<Cliente> findAllQuery(String nombre) {
+        return clienteDao.getClientesNombre(nombre);
+
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+        return clienteDao.findAllRegiones();
+    }
 }

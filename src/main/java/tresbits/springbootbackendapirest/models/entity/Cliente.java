@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 @Entity
@@ -29,14 +31,24 @@ public class Cliente implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotNull(message = "no puede estar vacio")
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
 
-    @PrePersist
-    public void prePersit() {
-        createAt = new Date();
-    }
+    @Column(name = "foto")
+    private String foto;
+
+    @NotNull(message = "la región no puede ser vacia")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+    private Region region;
+
+    // @PrePersist
+    // public void prePersit() {
+    // create_at = new Date();
+    // }
 
     public Long getId() {
         return this.id;
@@ -76,6 +88,22 @@ public class Cliente implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public String getFoto() {
+        return this.foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     private static final long serialVersionUID = 1l;
