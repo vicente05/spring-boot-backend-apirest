@@ -1,21 +1,23 @@
 package tresbits.springbootbackendapirest.models.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
-@Entity()
-@Table(name = "regiones")
-public class Region implements Serializable {
+import lombok.Data;
 
+
+@Data
+@Entity
+@Table(name = "roles")
+public class Role implements Serializable{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "nombre", length = 255)
+    @Column(unique = true, name = "nombre", length = 20)
     private String nombre;
 
     private static final long serialVersionUID = 1l;
-
 }

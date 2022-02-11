@@ -45,6 +45,12 @@ public class ClienteRestController {
         return clienteService.findAll(pageable);
     }
 
+    @GetMapping("/page/{page}/{take}")
+    public Page<Cliente> findAllPage(@PathVariable Integer page, @PathVariable Integer take) {
+        Pageable pageable = PageRequest.of(page, take, Sort.by("nombre"));
+        return clienteService.findAll(pageable);
+    }
+
     @GetMapping("/nombre/{nombre}")
     public List<Cliente> findAllName(@PathVariable String nombre) {
         return clienteService.findAllQuery(nombre);

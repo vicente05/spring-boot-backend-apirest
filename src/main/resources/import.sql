@@ -20,3 +20,15 @@ insert into clientes ( region_id, nombre, apellido, email, create_at) values (2,
 insert into clientes ( region_id, nombre, apellido, email, create_at) values (3,'Gustav', 'Rewan', 'grewan888@gmail.com', TO_DATE('2021-05-13', 'YYYY-MM-DD') );
 insert into clientes ( region_id, nombre, apellido, email, create_at) values (2,'Vicente', 'Marti', 'vmarti_soriano@gmail.com', TO_DATE('1992-07-17', 'YYYY-MM-DD') );
 insert into clientes ( region_id, nombre, apellido, email, create_at) values (3,'Vicente', 'Soriano', 'vicentemline@gmail.com', TO_DATE('2021-05-13', 'YYYY-MM-DD') );
+
+/* Creamos algunos usuarios con sus roles */
+
+insert into usuarios ( username, password, enabled, email ) values ('andres', '$2a$10$5/GLO9oDczVYel0QSxqsl.RhTYit5Vvt35hZMDzZkXMOSsyUIcjMa', true, 'vmarti@tresbits.es');
+insert into usuarios ( username, password, enabled, email ) values ('admin', '$2a$10$5/GLO9oDczVYel0QSxqsl.RhTYit5Vvt35hZMDzZkXMOSsyUIcjMa', true, 'vicentemline@gmail.com');
+
+insert into roles ( nombre ) values ('ROLE_USER');
+insert into roles ( nombre ) values ('ROLE_ADMIN');
+
+insert into usuarios_roles ( usuario_id, role_id ) values ( 1, 1 );
+insert into usuarios_roles ( usuario_id, role_id ) values ( 2, 2 );
+insert into usuarios_roles ( usuario_id, role_id ) values ( 2, 1 );
