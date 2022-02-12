@@ -1,4 +1,4 @@
-package tresbits.springbootbackendapirest.models.services;
+package tresbits.springbootbackendapirest.services;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

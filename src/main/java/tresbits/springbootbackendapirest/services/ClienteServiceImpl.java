@@ -1,8 +1,8 @@
-package tresbits.springbootbackendapirest.models.services;
+package tresbits.springbootbackendapirest.services;
 
-import tresbits.springbootbackendapirest.models.entity.Cliente;
-import tresbits.springbootbackendapirest.models.entity.Region;
-import tresbits.springbootbackendapirest.models.dao.IClienteDao;
+import tresbits.springbootbackendapirest.database.entity.Cliente;
+import tresbits.springbootbackendapirest.database.entity.Region;
+import tresbits.springbootbackendapirest.database.dao.IClienteDao;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;

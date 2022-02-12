@@ -1,4 +1,4 @@
-package tresbits.springbootbackendapirest.models.entity;
+package tresbits.springbootbackendapirest.database.entity;
 
 import java.io.Serializable;
 

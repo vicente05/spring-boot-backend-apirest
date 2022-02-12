@@ -1,12 +1,12 @@
-package tresbits.springbootbackendapirest.models.services;
+package tresbits.springbootbackendapirest.services;
 
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import tresbits.springbootbackendapirest.models.entity.Cliente;
-import tresbits.springbootbackendapirest.models.entity.Region;
+import tresbits.springbootbackendapirest.database.entity.Cliente;
+import tresbits.springbootbackendapirest.database.entity.Region;
 
 public interface IClienteService {
     public List<Cliente> findAll();

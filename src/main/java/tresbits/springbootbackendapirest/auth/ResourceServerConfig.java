@@ -19,10 +19,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         "/configuration/security",
         "/swagger-ui.html",
         "/webjars/**",
-        // -- Swagger UI v3 (OpenAPI)
-        "/v3/api-docs/**",
         "/swagger-ui/**"
-        // other public endpoints of your API may be appended to this array
     };
 
     @Override
@@ -33,7 +30,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             .antMatchers(HttpMethod.GET,"/clientes/page/{page}").permitAll()
             .antMatchers(HttpMethod.GET,"/clientes/page/{page}/{take}").permitAll()
             .antMatchers(HttpMethod.GET,"/clientes/uploads/img/{nombreFoto:.+}").permitAll()
-            .antMatchers(HttpMethod.GET,"/clientes/copiar").permitAll()
             .anyRequest().authenticated();
     }
     

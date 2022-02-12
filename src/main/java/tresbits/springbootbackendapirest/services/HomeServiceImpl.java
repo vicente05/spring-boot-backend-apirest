@@ -1,4 +1,4 @@
-package tresbits.springbootbackendapirest.models.services;
+package tresbits.springbootbackendapirest.services;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

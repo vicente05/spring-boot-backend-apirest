@@ -1,4 +1,4 @@
-package tresbits.springbootbackendapirest;
+package tresbits.springbootbackendapirest.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

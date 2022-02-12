@@ -1,4 +1,4 @@
-package tresbits.springbootbackendapirest.models.services;
+package tresbits.springbootbackendapirest.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import tresbits.springbootbackendapirest.models.dao.IUsuarioDao;
-import tresbits.springbootbackendapirest.models.entity.Usuario;
+import tresbits.springbootbackendapirest.database.dao.IUsuarioDao;
+import tresbits.springbootbackendapirest.database.entity.Usuario;
 
 import java.util.List;
 import java.util.stream.Collectors;
