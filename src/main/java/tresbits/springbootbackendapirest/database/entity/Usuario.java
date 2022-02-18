@@ -29,6 +29,12 @@ public class Usuario implements Serializable {
     @Column(length = 255, name = "email", unique = true)
     private String email;
 
+    @Column(length = 255, name = "nombre")
+    private String nombre;
+
+    @Column(length = 255, name = "apellido")
+    private String apellido;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
         name = "usuarios_roles", 

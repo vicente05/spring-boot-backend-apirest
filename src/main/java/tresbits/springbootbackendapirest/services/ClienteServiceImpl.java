@@ -5,6 +5,9 @@ import tresbits.springbootbackendapirest.database.entity.Region;
 import tresbits.springbootbackendapirest.database.dao.IClienteDao;
 import java.util.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class ClienteServiceImpl extends HomeServiceImpl implements IClienteService {
     @Autowired
     private IClienteDao clienteDao;
+
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     @Transactional(readOnly = true)

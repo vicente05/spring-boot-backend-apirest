@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
+
 
 @ControllerAdvice
 public class exceptions {
@@ -20,10 +20,7 @@ public class exceptions {
     private static final Logger logger = LoggerFactory.getLogger(exceptions.class);
 
     @ExceptionHandler(value = { DataAccessException.class })
-    public ResponseEntity<?> handleDataAccessException(
-            DataAccessException ex,
-            WebRequest request,
-            HttpServletRequest httpRequest) {
+    public ResponseEntity<?> handleDataAccessException( DataAccessException ex, HttpServletRequest httpRequest ) {
         Map<String, Object> response = new HashMap<>();
         response.put("mensaje", "Error al realizar al realizar una operación en la base de datos");
         response.put("error", ex.getMessage() + ": " + ex.getMostSpecificCause());

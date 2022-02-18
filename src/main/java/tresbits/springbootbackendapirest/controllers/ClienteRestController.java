@@ -7,7 +7,8 @@ import javax.validation.Valid;
 
 import java.util.*;
 import org.springframework.http.*;
-
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Pageable;
@@ -19,13 +20,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.annotations.Api;
 import tresbits.springbootbackendapirest.database.entity.Cliente;
 import tresbits.springbootbackendapirest.database.entity.Region;
 import tresbits.springbootbackendapirest.services.ClienteServiceImpl;
 import tresbits.springbootbackendapirest.services.IUploadFileService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
+@Api(tags = "Clientes", description = " ")
 @RequestMapping("/clientes")
 public class ClienteRestController {
     @Autowired
@@ -35,6 +37,7 @@ public class ClienteRestController {
     private IUploadFileService uploadService;
 
     @GetMapping
+    
     public List<Cliente> findAll() {
         return clienteService.findAll();
     }
@@ -57,6 +60,8 @@ public class ClienteRestController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasPermission(#id, 'Foo', 'read')")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ResponseEntity<?> show(@PathVariable Long id) {
         Cliente cliente = null;
         Map<String, Object> response = new HashMap<>();
@@ -72,6 +77,7 @@ public class ClienteRestController {
     }
 
     @PostMapping
+    @Secured({"ROLE_ADMIN"})
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
         Cliente clienteNew = null;
         Map<String, Object> response = new HashMap<>();
@@ -91,6 +97,7 @@ public class ClienteRestController {
     }
 
     @PutMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, @PathVariable long id) {
         Cliente clienteActual = clienteService.findById(id);
         Cliente clienteUpdate = null;
@@ -120,6 +127,7 @@ public class ClienteRestController {
     }
 
     @DeleteMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<?> delete(@PathVariable long id) {
 
@@ -136,6 +144,7 @@ public class ClienteRestController {
     }
 
     @PostMapping("/upload")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id) {
 
         Map<String, Object> response = new HashMap<>();
@@ -193,6 +202,7 @@ public class ClienteRestController {
     }
 
     @GetMapping("/regiones")
+    @Secured({"ROLE_ADMIN"})
     public List<Region> listarRegiones() {
         return clienteService.findAllRegiones();
     }

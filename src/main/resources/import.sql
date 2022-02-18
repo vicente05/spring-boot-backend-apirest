@@ -23,8 +23,8 @@ insert into clientes ( region_id, nombre, apellido, email, create_at) values (3,
 
 /* Creamos algunos usuarios con sus roles */
 
-insert into usuarios ( username, password, enabled, email ) values ('andres', '$2a$10$5/GLO9oDczVYel0QSxqsl.RhTYit5Vvt35hZMDzZkXMOSsyUIcjMa', true, 'vmarti@tresbits.es');
-insert into usuarios ( username, password, enabled, email ) values ('admin', '$2a$10$5/GLO9oDczVYel0QSxqsl.RhTYit5Vvt35hZMDzZkXMOSsyUIcjMa', true, 'vicentemline@gmail.com');
+insert into usuarios ( username, password, enabled, email, nombre, apellido ) values ('andres', '$2a$10$3wyHnv/t/k5bDWGKmtAhSOXVoOR633z9RQ0RxSoW7ypooDIipNeY.', true, 'vmarti@tresbits.es', 'Vicente', 'Marti Soriano');
+insert into usuarios ( username, password, enabled, email, nombre, apellido ) values ('admin', '$2a$10$3wyHnv/t/k5bDWGKmtAhSOXVoOR633z9RQ0RxSoW7ypooDIipNeY.', true, 'vicentemline@gmail.com', 'vicente', 'prueba2');
 
 insert into roles ( nombre ) values ('ROLE_USER');
 insert into roles ( nombre ) values ('ROLE_ADMIN');

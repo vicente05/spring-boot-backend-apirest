@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import lombok.Data;
+
+@Data
 @Entity()
 @Table(name = "regiones")
 public class Region implements Serializable {
